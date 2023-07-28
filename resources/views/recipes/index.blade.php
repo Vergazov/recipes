@@ -4,8 +4,6 @@
 @endsection
 @section('content')
     <div class="container">
-        <h2>Список рецептов</h2>
-        <a href="#" class="btn btn-primary">Добавить новый</a>
         <table class="table">
             <thead>
             <tr>
@@ -18,10 +16,16 @@
             <tbody>
             @foreach($recipes as $recipe)
             <tr>
-                <th>{{$recipe->id}}</th>
+                <th></th>
                 <td>{{$recipe->name}}</td>
-                <td><a href="#" class="btn btn-primary">Описание рецепта</a></td>
-                <td><a href="#" class="btn btn-danger">Удалить</a></td>
+                <td><a href="{{route('recipes.show',$recipe->id)}}" class="btn btn-primary">Описание рецепта</a></td>
+                <td>
+                    <form action="{{route('recipes.destroy',$recipe->id)}}" method="post">
+                        @csrf
+                        @method('delete')
+                        <input type="submit" value="Удалить" class="btn btn-danger">
+                    </form>
+                </td>
             </tr>
             @endforeach
             </tbody>

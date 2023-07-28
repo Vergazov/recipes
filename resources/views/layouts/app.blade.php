@@ -9,6 +9,10 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+<nav class="container w-50">
+    <a href="{{route('recipes.index')}}" class="btn btn-primary">Список рецептов</a>
+    <a href="{{route('recipes.create')}}" class="btn btn-primary">Добавить новый</a>
+</nav>
 <div class="container w-50">
     @yield('content')
 </div>
