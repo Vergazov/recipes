@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class RecipesController extends Controller
 {
     public function index(){
-        return view('recipes.index');
+        $recipes = Recipe::all();
+        return view('recipes.index', compact('recipes'));
     }
 
     public function create(){
